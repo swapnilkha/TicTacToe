@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  TicTacToe
 //
-//  Created by Swapnil Kha on 7/13/18.
-//  Copyright © 2018 Swapnil Kha. All rights reserved.
+//  Created by Swapnil Kha on 5/13/17.
+//  Copyright © 2017 Swapnil Kha. All rights reserved.
 //
 
 import UIKit
