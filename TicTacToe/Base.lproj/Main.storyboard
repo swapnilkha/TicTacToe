@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Board.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-3B-Mnv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Board.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-3B-Mnv">
                                 <rect key="frame" x="0.0" y="128" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUo-2q-A7b">
                                 <rect key="frame" x="137" y="265" width="100" height="100"/>
@@ -114,7 +113,23 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rdh-3B-Mnv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cwV-OL-FPV"/>
+                            <constraint firstItem="rdh-3B-Mnv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kCp-Ln-vhz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cwV-OL-FPV"/>
+                                <exclude reference="kCp-Ln-vhz"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="cwV-OL-FPV"/>
+                                <include reference="kCp-Ln-vhz"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="Label" destination="1UT-i3-nQK" id="p2r-Ug-ecd"/>

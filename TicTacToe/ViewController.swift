@@ -10,16 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var currentPlayer = 1
-    var gameGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    let winCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-    var isGameActive = true
+    //Basic variables for tic-tac-toe
+    var currentPlayer = 1 //1 is circle
+    var gameGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0] //9 box grid
+    let winCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]] //all of the possible combinations in a 9 box grid that can win
+    var isGameActive = true //determines when to end game
     
-    @IBOutlet weak var Label: UILabel!
+    @IBOutlet weak var Label: UILabel! //label for game decision (tie, circle or cross wins)
     
 
     @IBAction func action(_ sender: AnyObject) {
         
+        //set current player to cross
         if(gameGrid[sender.tag - 1] == 0 && isGameActive == true) {
             gameGrid[sender.tag - 1] = currentPlayer
             if(currentPlayer == 1) {
@@ -32,8 +34,10 @@ class ViewController: UIViewController {
             }
         }
         
+        //constantly loop through the tictactoe grid to find a winner
         for combos in winCombos {
             
+            //using logic, we can figure out the scenario in which there is a winner in this condition
             if(gameGrid[combos[0]] != 0 && gameGrid[combos[0]] == gameGrid[combos[1]] && gameGrid[combos[1]] == gameGrid[combos[2]]) {
                 isGameActive = false
                 if(gameGrid[combos[0]] == 1) {
@@ -44,16 +48,18 @@ class ViewController: UIViewController {
                 }
                 playAgainButton.isHidden = false
                 Label.isHidden = false
-                
+                //end game once cross or circle wins
             }
         }
         
+        //Draw scenario
         var count = 1
 
         if (isGameActive == true) {
             for i in gameGrid {
                 count = i * count
             }
+            //count all the gamegrid variables (1-9) to find a draw
             if(count != 0) {
                 Label.text = "IT WAS A DRAW!"
                 Label.isHidden = false
@@ -63,8 +69,9 @@ class ViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var playAgainButton: UIButton! //If user wants to play again
     
+    //Then we can reset all the initial variables
     @IBAction func playAgain(_ sender: AnyObject) {
         gameGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         isGameActive = true
@@ -72,6 +79,7 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = true
         Label.isHidden = true
         
+        //And reset the buttons on the board
         for i in 1...9 {
             let button = view.viewWithTag(i) as! UIButton
             button.setImage(nil, for: UIControlState())
