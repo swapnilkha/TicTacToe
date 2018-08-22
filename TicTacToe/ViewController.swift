@@ -12,8 +12,21 @@ class ViewController: UIViewController {
     
     //Basic variables for tic-tac-toe
     var currentPlayer = 1 //1 is circle
-    var gameGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0] //9 box grid
-    let winCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]] //all of the possible combinations in a 9 box grid that can win
+    var gameGrid = [0, 0, 0,
+                    0, 0, 0,
+                    0, 0, 0] //9 box grid
+    
+    let winCombos = [[0, 1, 2], //horizontal line combos
+                     [3, 4, 5],
+                     [6, 7, 8],
+                     
+                     [0, 3, 6], //vertical combos
+                     [1, 4, 7],
+                     [2, 5, 8],
+                     
+                     [0, 4, 8], //diagonal combos
+                     [2, 4, 6]] //all of the possible combinations in a 9 box grid that can win
+    
     var isGameActive = true //determines when to end game
     
     @IBOutlet weak var Label: UILabel! //label for game decision (tie, circle or cross wins)
@@ -85,6 +98,8 @@ class ViewController: UIViewController {
             button.setImage(nil, for: UIControlState())
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
